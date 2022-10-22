@@ -1,0 +1,8 @@
+Name: user
+Host: 0.0.0.0
+Port: 8888
+MySQL:
+  DataSource: go-filedrop:go-filedrop@tcp(127.0.0.1:3306)/go-filedrop?charset=utf8mb4&parseTime=True&loc=Local
+
+Redis:
+  Addr: localhost:6379

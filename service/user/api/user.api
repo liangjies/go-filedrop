@@ -1,0 +1,47 @@
+type UserRegisterRequest {
+	// 用户名
+	Name string `json:"name"`
+	// 密码
+	Password string `json:"password"`
+	// 邮箱
+	Email string `json:"email"`
+}
+
+type UserRegisterReply {
+	Code int    `json:"code"`
+	Msg  string `json:"msg"`
+}
+
+type LoginRequest {
+	Name     string `json:"name"`
+	Password string `json:"password"`
+}
+
+type LoginReply {
+	Token        string `json:"token"`
+	RefreshToken string `json:"refresh_token"`
+}
+
+type UserDetailRequest {
+	Identity string `json:"identity"`
+}
+
+type UserDetailReply {
+	Name  string `json:"name"`
+	Email string `json:"email"`
+}
+
+service user {
+	// 用户登录
+	@handler UserLogin
+	post /user/login(LoginRequest) returns (LoginReply)
+	
+	// 用户详情
+	@handler UserDetail
+	post /user/detail(UserDetailRequest) returns (UserDetailReply)
+	
+	// 用户注册
+	@handler UserRegister
+	post /user/register(UserRegisterRequest) returns (UserRegisterReply)
+	
+}
